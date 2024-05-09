@@ -13,10 +13,11 @@ def main():
 
     start_time = time.time()
 
-    t_audio = transcribe_audio.transcribe_audio("30second.mp3", client)
+    t_audio = transcribe_audio.transcribe_audio("KSE Macro - Group 11 - Reducing Labor Migration and Encouraging Ukrainian Refugees to Return Post-War.mp3", client)
     print(t_audio)
     finish_time = time.time()
     print(f"wait time: {finish_time - start_time}")
+    # print(key_pointer(t_audio))
 
 
 if __name__ == "__main__":
@@ -63,6 +64,6 @@ if __name__ == "__main__":
 #         ]
 #     )
 #     return response.choices[0].message.content
-#
-#
+# #
+# #
 # print(key_pointer(transcribe_audio))
