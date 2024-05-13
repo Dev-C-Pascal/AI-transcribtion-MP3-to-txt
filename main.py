@@ -2,68 +2,33 @@ import os
 import time
 from openai import OpenAI
 from settings import settings
-import transcribe_audio
+from transcribe_audio import transcribe_audio
 from process_folder import process_folder
+from key_pointer import key_pointer
 
 
 def main():
-    client = OpenAI(
-        api_key=settings.api.api_key
-    )
+    client = OpenAI(api_key=settings.api.api_key)
 
-    start_time = time.time()
+    input_folder = "set4_mp3_divided"
+    inpt_folder = process_folder(input_folder, client)
+    print(inpt_folder)
 
-    t_audio = transcribe_audio.transcribe_audio("KSE Macro - Group 11 - Reducing Labor Migration and Encouraging Ukrainian Refugees to Return Post-War.mp3", client)
-    print(t_audio)
-    finish_time = time.time()
-    print(f"wait time: {finish_time - start_time}")
-    # print(key_pointer(t_audio))
+
+    # inpt_folder = input("Berlin_transcripted")
+    # for file_path in inpt_folder:
+    #     with open(file_path, 'r') as file:
+    #         transcription = file.read()
+    #         key_points = key_pointer(transcription, client)
+    #         print(f"Key points for {file_path}:")
+    #         print(key_points)
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     main()
 
-# finish_time = time.time()
-# print(f"working time: {finish_time - start_time}")   # 30 sec audio +- 10 sec wait time
+    finish_time = time.time()
+    print(f"wait time: {finish_time - start_time}")
 
-
-# def abstract_summary_extraction(transcription):
-#     response = client.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=[
-#             {
-#                 "role": "system",
-#                 "content": "You are a highly skilled AI trained in language comprehension and summarization. "
-#                            "I would like you to read the following text and summarize it into a concise abstract paragraph."
-#                            "Aim to retain the most important points, providing a coherent and readable summary "
-#                            "that could help a person understand the main points of the discussion without needing to read the entire text."
-#                            "Please avoid unnecessary details or tangential points. "
-#             },
-#             {
-#                 "role": "user",
-#                 "content": transcription
-#             }
-#         ]
-#     )
-#     return response.choices[0].message.content
-
-
-# def key_pointer(transcription):
-#     response = client.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=[
-#             {
-#                 "role": "system",
-#                 "content": "Please distill the key arguments and or facts from this text."
-#                            " Return a bullet point list with one - two sentences per point."
-#             },
-#             {
-#                 "role": "user",
-#                 "content": transcription
-#             }
-#         ]
-#     )
-#     return response.choices[0].message.content
-# #
-# #
-# print(key_pointer(transcribe_audio))
+# 30 sec audio +- 10 sec wait time

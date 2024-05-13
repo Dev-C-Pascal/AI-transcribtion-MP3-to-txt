@@ -29,27 +29,27 @@ def process_folder(input_folder):
             input_file = os.path.join(input_folder, filename)
             file_size_mb = os.path.getsize(input_file) / (1024 * 1024)  # Convert bytes to megabytes
 
+
             if file_size_mb <= 25:
-                # File size is less than or equal to 25 MB, copy the file as is
                 output_file = os.path.join(output_folder, filename)
                 os.makedirs(os.path.dirname(output_file), exist_ok=True)
                 with open(input_file, 'rb') as f_in, open(output_file, 'wb') as f_out:
                     f_out.write(f_in.read())
             else:
-                # File size is greater than 25 MB, divide the file based on size range
                 file_output_folder = os.path.join(output_folder, os.path.splitext(filename)[0])
                 os.makedirs(file_output_folder, exist_ok=True)
-
-                if file_size_mb <= 100:
-                    # File size is between 25 MB and 100 MB, divide into 5 parts
+                if file_size_mb <= 49:
+                    divide_mp3(input_file, file_output_folder, num_parts=2)
+                elif file_size_mb <= 100:
                     divide_mp3(input_file, file_output_folder, num_parts=5)
                 else:
-                    # File size is greater than 100 MB, divide into 10 parts
                     divide_mp3(input_file, file_output_folder, num_parts=10)
 
     print(f"All MP3 files in the folder '{input_folder}' have been processed and saved in the folder: {output_folder}")
 
 
+divide_mp3("Berlinska_Chicago.mp3", "Berlin", 2)
+
 # Example usage
-input_folder = "test1"
-process_folder(input_folder)
+# input_folder = "set4_mp3"
+# process_folder(input_folder)

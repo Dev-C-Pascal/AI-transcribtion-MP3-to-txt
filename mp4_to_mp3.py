@@ -1,4 +1,5 @@
 import os
+import time
 import subprocess
 from pydub import AudioSegment
 
@@ -22,9 +23,7 @@ def convert_mp4_to_mp3(input_file, output_file):
         print("Could not convert mp4 to mp3")
 
 
-convert_mp4_to_mp3(
-    "KSE Macro - Group 11 - Reducing Labor Migration and Encouraging Ukrainian Refugees to Return Post-War.mp4",
-    "KSE Macro - Group 11 - Reducing Labor Migration and Encouraging Ukrainian Refugees to Return Post-War.mp3")
+# convert_mp4_to_mp3()
 
 
 def convert_m4a_to_mp3(m4a_file, mp3_file):
@@ -32,7 +31,7 @@ def convert_m4a_to_mp3(m4a_file, mp3_file):
     audio.export(mp3_file, format="mp3")
 
 
-# convert_m4a_to_mp3("Budget-Balancing-During-War.m4a", "Budget-Balancing-During-War.mp3")
+convert_m4a_to_mp3("Berlinska in Chicago.m4a","Berlinska_Chicago.mp3")
 
 
 def convert_folder(input_folder):
@@ -50,6 +49,10 @@ def convert_folder(input_folder):
 
     return output_folder
 
-# input_folder = "set1"
+
+# start_time = time.time()
+# input_folder = "set4"
 # output_folder = convert_folder(input_folder)
 # print(f"Conversion complete. Output folder: {output_folder}")
+# finish_time = time.time()
+# print(f"Execution time: {finish_time - start_time}")
