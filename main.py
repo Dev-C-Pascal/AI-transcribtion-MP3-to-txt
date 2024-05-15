@@ -9,11 +9,8 @@ from key_pointer import key_pointer
 
 def main():
     client = OpenAI(api_key=settings.api.api_key)
-
-    input_folder = "set4_mp3_divided"
-    inpt_folder = process_folder(input_folder, client)
-    print(inpt_folder)
-
+    # t_audio = transcribe_audio.transcribe_audio("")
+    # print(t_audio)
 
     # inpt_folder = input("Berlin_transcripted")
     # for file_path in inpt_folder:
