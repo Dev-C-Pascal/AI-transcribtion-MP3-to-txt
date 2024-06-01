@@ -31,7 +31,7 @@ def convert_m4a_to_mp3(m4a_file, mp3_file):
     audio.export(mp3_file, format="mp3")
 
 
-convert_m4a_to_mp3("Berlinska in Chicago.m4a","Berlinska_Chicago.mp3")
+convert_m4a_to_mp3("444.m4a", "444.mp3")
 
 
 def convert_folder(input_folder):

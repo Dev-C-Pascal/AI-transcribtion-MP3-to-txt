@@ -4,7 +4,7 @@ def transcribe_audio(audio_file_path, client):
             transcription = client.audio.transcriptions.create(
                 model="whisper-1",
                 file=audio_file,
-                language="en"
+                language="uk"
             )
             return transcription.text
         except Exception as e:

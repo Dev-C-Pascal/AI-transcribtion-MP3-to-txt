@@ -29,7 +29,6 @@ def process_folder(input_folder):
             input_file = os.path.join(input_folder, filename)
             file_size_mb = os.path.getsize(input_file) / (1024 * 1024)  # Convert bytes to megabytes
 
-
             if file_size_mb <= 25:
                 output_file = os.path.join(output_folder, filename)
                 os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -48,7 +47,7 @@ def process_folder(input_folder):
     print(f"All MP3 files in the folder '{input_folder}' have been processed and saved in the folder: {output_folder}")
 
 
-divide_mp3("Berlinska_Chicago.mp3", "Berlin", 2)
+divide_mp3("444.mp3", "4", 2)
 
 # Example usage
 # input_folder = "set4_mp3"
