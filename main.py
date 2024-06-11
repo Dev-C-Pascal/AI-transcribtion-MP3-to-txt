@@ -11,8 +11,8 @@ import process_folder
 
 def main():
     client = OpenAI(api_key=settings.api.api_key)
-    res = process_folder.process_folder("4", client)
-    # res = transcribe_audio.transcribe_audio("333.mp3", client)
+    # res = process_folder.process_folder("1", client)
+    res = transcribe_audio.transcribe_audio("1.mp3", client)
 
     print(res)
 
@@ -22,8 +22,6 @@ if __name__ == "__main__":
 
     finish_time = time.time()
     print(f"wait time: {finish_time - start_time}")
-
-
 
 # 30 sec audio +- 10 sec wait time
 

@@ -47,7 +47,7 @@ def process_folder(input_folder):
     print(f"All MP3 files in the folder '{input_folder}' have been processed and saved in the folder: {output_folder}")
 
 
-divide_mp3("444.mp3", "4", 2)
+divide_mp3("UKR_trimered.mp3", "1", 3)
 
 # Example usage
 # input_folder = "set4_mp3"
