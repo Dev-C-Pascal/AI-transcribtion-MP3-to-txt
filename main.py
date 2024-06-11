@@ -1,22 +1,40 @@
 import os
+import time
 from openai import OpenAI
 from settings import settings
-
-client = OpenAI(
-    api_key=settings.api.api_key
-)
+import transcribe_audio
+import process_folder
 
 
-def transcribe_audio(audio_file_path):
-    with open(audio_file_path, 'rb') as audio_file:
-        try:
-            transcription = client.audio.transcriptions.create(
-                model="whisper-1",
-                file=audio_file
-            )
-            return transcription.text
-        except Exception as e:
-            return str(e)
+# from key_pointer import key_pointer
 
 
-print(transcribe_audio("video1.mp3"))
+def main():
+    client = OpenAI(api_key=settings.api.api_key)
+    # res = process_folder.process_folder("1", client)
+    res = transcribe_audio.transcribe_audio("1.mp3", client)
+
+    print(res)
+
+if __name__ == "__main__":
+    start_time = time.time()
+    main()
+
+    finish_time = time.time()
+    print(f"wait time: {finish_time - start_time}")
+
+# 30 sec audio +- 10 sec wait time
+
+
+# client = OpenAI(api_key=settings.api.api_key)
+#
+# response = client.chat.completions.create(
+#   model="gpt-3.5-turbo",
+#   messages=[
+#     {"role": "system", "content": },
+#     {"role": "user", "content": "Who won the world series in 2020?"},
+#   ]
+#
+#
+# )
+# print(response.choices[0].message.content)
