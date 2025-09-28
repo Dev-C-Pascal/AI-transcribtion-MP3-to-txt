@@ -1,9 +1,11 @@
 import os
 import time
 from openai import OpenAI
+
 from settings import settings
-import transcribe_audio
+
 import process_folder
+import transcribe_audio
 
 
 # from key_pointer import key_pointer
@@ -13,8 +15,10 @@ def main():
     client = OpenAI(api_key=settings.api.api_key)
     # res = process_folder.process_folder("1", client)
     res = transcribe_audio.transcribe_audio("1.mp3", client)
-
-    print(res)
+    if res.get("error"):
+        print(res["error"])
+    else:
+        print(res["text"])
 
 if __name__ == "__main__":
     start_time = time.time()
